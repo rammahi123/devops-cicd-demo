@@ -26,7 +26,10 @@ pipeline {
     stage ('Run Container') {
       steps {
         echo 'Running container...'
-        sh 'docker run -d -p 8080:80 rammahi123/devops-demo:v2'
+        sh '''
+        docker rm -f devops-demo || true
+        docker run -d -p 9090:80 --name devops-demo rammahi123/devops-demo:v2
+        '''
       }
     }
   }
