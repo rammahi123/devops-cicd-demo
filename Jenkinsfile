@@ -2,36 +2,27 @@ pipeline {
   agent any
 
   stages {
+
     stage('Clone Repositary') {
       steps {
-        echo 'Cloning Repositary'
-        git branch: 'main', url: 'https://github.com/rammahi123/devops-cicd-demo.git'
+        git 'https://github.com/rammahi123/devops-cicd-demo.git'
       }
     }
 
-    stage('Build docker image') {
+    stage('Build Docker Image') {
       steps {
-        echo 'Building Docker image...'
-        sh 'docker build -t rammahi123/devops-demo:v3 .'
+        sh 'docker build -t rammahi123/devops-demo:v4 .'
       }
     }
 
-    stage('Push Docker image') {
+    stage('Push Image') {
       steps {
-        echo 'Push Docker image to DockerHub...'
-        sh 'docker push rammahi123/devops-demo:v3'
+        sh 'docker push rammahi123/devops-demo:v4'
       }
     }
 
-    stage ('Run Container') {
+    stage('Deploy to Kubernetes') {
       steps {
-        echo 'Running container...'
-        sh '''
-        docker rm -f devops-demo || true
-        docker run -d -p 9090:80 --name devops-demo rammahi123/devops-demo:v3
-        '''
+        sh 'kubectl set image deployment/devops-demo devops-demo=rammahi123/devopsdemo:v4'
       }
     }
-  }
-}
-        
