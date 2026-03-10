@@ -1,1 +1,1 @@
-print("Hello from DevOps CI/CD Pipeline")
+print("New version deployed")
