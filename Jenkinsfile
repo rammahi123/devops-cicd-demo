@@ -26,7 +26,7 @@ pipeline {
     stage ('Run Container') {
       steps {
         echo 'Running container...'
-        sh 'docker run rammahi123/docker-demo:v2'
+        sh 'docker run --rm rammahi123/devops-demo:v2'
       }
     }
   }
