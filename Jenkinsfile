@@ -26,3 +26,4 @@ pipeline {
         sh 'kubectl set image deployment/devops-demo devops-demo=rammahi123/devopsdemo:v4'
       }
     }
+  }
