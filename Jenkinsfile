@@ -5,7 +5,7 @@ pipeline {
 
     stage('Clone Repositary') {
       steps {
-        git 'https://github.com/rammahi123/devops-cicd-demo.git'
+        git branch: 'main', url: 'https://github.com/rammahi123/devops-cicd-demo.git'
       }
     }
 
