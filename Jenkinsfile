@@ -23,7 +23,7 @@ pipeline {
 
     stage('Deploy to Kubernetes') {
       steps {
-        sh 'kubectl set image deployment/devops-demo devops-demo=rammahi123/devops-demo:v4'
+        sh '/usr/local/bin/kubectl set image deployment/devops-demo devops-demo=rammahi123/devops-demo:v4'
       }
     }
   }
